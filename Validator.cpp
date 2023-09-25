@@ -67,6 +67,15 @@ int main(int argc, char* argv[]){
         else{
             cout << "Invalid Closed path: Found " << count-1 << "components" << endl;
         }
+
+        // for(int i = 1; i < n; i++){
+        //     if(visited[i] > 0){
+        //         cout << i << " " << visited[i] << endl;
+        //     }
+        // }
+
+        //Sample Walk
+
     }
 
 }

@@ -43,8 +43,8 @@ for i in range(len(edges)):
 # A variable per vertex, number of visits
 n = [0]
 for i in range(1,N+1):
-    # n.append(pulp.LpVariable("n"+str(i), lowBound=0, upBound=4, cat='Integer'))   # Type 2 problem
-    n.append(pulp.LpVariable("n"+str(i), lowBound=0, upBound=1, cat='Integer'))     # Type 1 problem
+    # n.append(pulp.LpVariable("n"+str(i), lowBound=0, upBound=5, cat='Integer'))   # Type 2 problem
+    n.append(pulp.LpVariable("n"+str(i), lowBound=0, upBound=2, cat='Integer'))     # Type 1 problem
 
 #! Uncomment/comment the above two lines to switch between type 1 and type 2 problems
 
@@ -58,7 +58,6 @@ Lp_prob += pulp.lpSum(x[i] * edges[i][2] for i in range(len(edges)))
 # Constraint 1: Each vertex must have 2 OR 0 edges
 for i in range(1,N+1):
     Lp_prob += pulp.lpSum(x[j] for j in ADJ[i]) == 2*n[i]
-
 
 
 

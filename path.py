@@ -43,7 +43,7 @@ for i in range(len(edges)):
 # A variable per vertex, number of visits
 n = [0]
 for i in range(1,N+1):
-    n.append(pulp.LpVariable("n"+str(i), lowBound=0, upBound=4, cat='Integer'))
+    n.append(pulp.LpVariable("n"+str(i), lowBound=0, upBound=2, cat='Integer'))
 
 
 # A variable to denote end points.
