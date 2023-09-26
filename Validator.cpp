@@ -43,39 +43,58 @@ int main(int argc, char* argv[]){
     }
 
 
+    int visited[n+1];
+    for(int i = 0; i <= n; i++){
+        visited[i] = 0;
+    }
 
-    if(choice  == 1 || choice == 2){
-        int visited[n+1];
-        for(int i = 0; i <= n; i++){
-            visited[i] = 0;
+    int count = 1;
+    for(int i = 1; i <= n; i++){
+        if(ADJ[i].size() == 0){
+            visited[i] = -1;
         }
+        else if(visited[i] == 0){
+            dfs(ADJ, visited, n, count, i);
+            count++;
+        }
+    }
 
-        int count = 1;
-        for(int i = 1; i <= n; i++){
-            if(ADJ[i].size() == 0){
-                visited[i] = -1;
-            }
-            else if(visited[i] == 0){
-                dfs(ADJ, visited, n, count, i);
-                count++;
-            }
-        }
+    if(count == 2){
+        cout << "Valid closed path" << endl;
+    }
+    else{
+        cout << "Invalid Closed path: Found " << count-1 << "components" << endl;
+        return 0;
+    }
 
-        if(count == 2){
-            cout << "Valid closed path" << endl;
-        }
-        else{
-            cout << "Invalid Closed path: Found " << count-1 << "components" << endl;
-        }
-
-        // for(int i = 1; i < n; i++){
-        //     if(visited[i] > 0){
-        //         cout << i << " " << visited[i] << endl;
-        //     }
-        // }
 
         //Sample Walk
+        int v;
+        if(choice == 1 || choice == 2){
+            for(int i = 1; i <= n; i++){
+                if(ADJ[i].size() > 0){
+                    v = i;
+                    break;
+                }
+            }
+        }
+        else{
+            v = start;
+            cout << "Start: " << v << endl;
+            cout << "End: " << end << endl;
+        }
 
-    }
+
+
+        cout << v << " ";
+        while(ADJ[v].size() != 0){
+            int w = ADJ[v][0];
+            cout << w << " ";
+            count++;
+            ADJ[v].erase(ADJ[v].begin());
+            ADJ[w].erase(find(ADJ[w].begin(), ADJ[w].end(), v));
+            v = w;
+        }
+        cout << endl;
 
 }

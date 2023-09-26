@@ -44,7 +44,7 @@ for i in range(len(edges)):
 n = [0]
 for i in range(1,N+1):
     # n.append(pulp.LpVariable("n"+str(i), lowBound=0, upBound=5, cat='Integer'))   # Type 2 problem
-    n.append(pulp.LpVariable("n"+str(i), lowBound=0, upBound=2, cat='Integer'))     # Type 1 problem
+    n.append(pulp.LpVariable("n"+str(i), lowBound=0, upBound=1, cat='Integer'))     # Type 1 problem
 
 #! Uncomment/comment the above two lines to switch between type 1 and type 2 problems
 
